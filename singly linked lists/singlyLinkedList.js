@@ -36,14 +36,23 @@ class SinglyLinkedList {
     this.tail = newTail;
     this.tail.next = null;
     this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return current;
+  }
+
+  shift() {
+    if (!this.head) return undefined;
+    let current = this.head;
+    this.head = current.next;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    length--;
     return current;
   }
 }
 
 let list = new SinglyLinkedList();
-list.push("one");
-list.push("two");
-list.push("three");
-list.push("four");
-list.pop();
-console.log(list);
