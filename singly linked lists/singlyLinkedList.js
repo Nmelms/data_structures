@@ -82,8 +82,23 @@ class SinglyLinkedList {
 
   set(index, val) {
     let node = this.get(index);
-    if (node === undefined) return false;
-    node.val = val;
+    if (node) {
+      node.val = val;
+      return true;
+    }
+    return false;
+  }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    let newNode = new Node(val);
+    let prev = this.get(index - 1);
+    newNode.next = prev.next;
+    prev.next = newNode;
+    this.length++;
     return true;
   }
 }
