@@ -53,6 +53,7 @@ class SinglyLinkedList {
     this.length--;
     return current;
   }
+
   unshift(val) {
     let newNode = new Node(val);
     if (!this.head) {
@@ -64,6 +65,19 @@ class SinglyLinkedList {
     }
     this.length++;
     return this;
+  }
+
+  get(val) {
+    let counter = 0;
+    let current = this.head;
+    if (val < 0 || val >= this.length) return undefined;
+
+    while (counter !== val) {
+      current = current.next;
+      counter++;
+    }
+
+    return current;
   }
 }
 
