@@ -68,6 +68,31 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+  get(idx) {
+    let count = 0;
+    let pointer = this.tail;
+    if (idx >= this.length || idx < 0) return null;
+    if (idx > this.length / 2) {
+      while (count !== this.length - 1 - idx) {
+        pointer = pointer.prev;
+        count++;
+      }
+    } else {
+      console.log("end");
+      pointer = this.head;
+      while (count !== idx) {
+        pointer = pointer.next;
+        count++;
+      }
+    }
+    return pointer;
+  }
 }
 
 let list = new DoublyLinkedList();
+list.push(1);
+list.push(2);
+list.push(3);
+list.push(4);
+list.push(5);
+list.push(6);
