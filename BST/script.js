@@ -37,6 +37,22 @@ class BinarySearchTree {
       }
     }
   }
+  find(val) {
+    if (!this.root) return undefined;
+    let current = this.root;
+    if (current === val) return current;
+    while (true) {
+      if (val < current.val) {
+        if (!current.left) return undefined;
+        current = current.left;
+      } else if (val > current.val) {
+        if (!current.right) return undefined;
+        current = current.right;
+      } else {
+        return current;
+      }
+    }
+  }
 }
 
 let tree = new BinarySearchTree();
