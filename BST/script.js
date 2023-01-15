@@ -81,6 +81,35 @@ class BinarySearchTree {
     console.log(visited);
     return visited;
   }
+  dfsPostOrder() {
+    let visited = [];
+    let current = this.root;
+
+    let helper = (node) => {
+      if (node.left) helper(node.left);
+      if (node.right) helper(node.right);
+      visited.push(node.val);
+    };
+
+    helper(current);
+    console.log(visited);
+    return visited;
+  }
+
+  dfsInOrder() {
+    let visited = [];
+    let current = this.root;
+
+    let helper = (node) => {
+      if (node.left) helper(node.left);
+      visited.push(node.val);
+      if (node.right) helper(node.right);
+    };
+
+    helper(current);
+    console.log(visited);
+    return visited;
+  }
 }
 
 let tree = new BinarySearchTree();
@@ -91,4 +120,4 @@ tree.insert(18);
 tree.insert(2);
 tree.insert(40);
 tree.insert(100);
-tree.dfsPreOrder();
+tree.dfsPostOrder();
