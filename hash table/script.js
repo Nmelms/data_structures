@@ -46,6 +46,38 @@ class HashTable {
     }
     return undefined;
   }
+  keys() {
+    let keys = [];
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          if (!keys.includes(this.keyMap[i][j][0])) {
+            keys.push(this.keyMap[i][j][0]);
+          }
+        }
+      }
+    }
+    return keys;
+  }
+  values() {
+    let keys = [];
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        for (let j = 0; j < this.keyMap[i].length; j++) {
+          if (!keys.includes(this.keyMap[i][j][1])) {
+            keys.push(this.keyMap[i][j][1]);
+          }
+        }
+      }
+    }
+    return keys;
+  }
 }
 
 const table = new HashTable();
+table.set("one", "1");
+table.set("two", "2");
+table.set("three", "3");
+table.set("four", "4");
+table.set("five", "5");
+table.set("six", "5");
