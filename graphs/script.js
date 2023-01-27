@@ -28,7 +28,7 @@ class Graph {
     delete this.adjacencyList[vertex];
   }
 
-  dfs(vertex) {
+  dft(vertex) {
     let visited = {};
     let list = [];
 
@@ -45,6 +45,26 @@ class Graph {
 
     helper(vertex);
     return list;
+  }
+
+  bft(vertex) {
+    let que = [vertex];
+    let result = [];
+    let visited = {};
+    visited[vertex] = true;
+
+    while (que.length) {
+      let current = que.shift();
+      result.push(current);
+      console.log(visited);
+      this.adjacencyList[current].forEach((child) => {
+        if (!visited[child]) {
+          visited[child] = true;
+          que.push(child);
+        }
+      });
+    }
+    return result;
   }
 }
 
