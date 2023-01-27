@@ -1,10 +1,6 @@
 class Graph {
   constructor() {
-    this.adjacencyList = {
-      Nile: ["Mile", "Rome"],
-      Mile: ["Nile", "Windsor", "Rome"],
-      Rome: ["Nile", "Mile"],
-    };
+    this.adjacencyList = {};
   }
 
   addVertex(vertex) {
@@ -31,6 +27,39 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
   }
+
+  dfs(vertex) {
+    let visited = {};
+    let list = [];
+
+    const helper = (vertex) => {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      list.push(vertex);
+      this.adjacencyList[vertex].forEach((child) => {
+        if (!visited[child]) {
+          return helper(child);
+        }
+      });
+    };
+
+    helper(vertex);
+    return list;
+  }
 }
 
 let g = new Graph();
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
